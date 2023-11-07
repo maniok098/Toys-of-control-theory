@@ -1,21 +1,21 @@
-function u = myController(x)
+function u = myController(x,x_des)
 % define the controller
 
-x1 = x(1); % position
-x2 = x(2); % velocity
+e1 = x(1) - x_des(1); % position error
+e2 = x(2) - x_des(2); % velocity error
 
 %% P controller
-u = -10*x1 -2*x2;
+% u = -10*e1 -2*e2;
 
 %% SMC controller
 % % % % No cheating.
 
-% c = 1;
-% sigma = x2 + c*x1;
-% rho = 2;
-% 
-% v = -rho*sign(sigma);
-% u = -c*x2 + v;
+c = 5;
+sigma = e2 + c*e1;
+rho = 4;
+
+v = -rho*sign(sigma);
+u = -c*e2 + v;
 
 end
 

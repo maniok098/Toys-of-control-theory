@@ -13,11 +13,12 @@ function xdot = f_fun(t,x,u)
 x1 = x(1); % position 
 x2 = x(2); % velocity
 
+umax= 10;
 % saturation of u
-if u>2
-    u = 2;
-elseif u<-2
-    u = -2;
+if u>umax
+    u = umax;
+elseif u<-umax
+    u = -umax;
 else 
     % do nothing
 end
